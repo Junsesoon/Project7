@@ -51,21 +51,47 @@ print(append2)
 
 
 # 13. delete(numpy)
-
+# 형식) np.delete(arr, obj, axis=None)
+# The axis along which to delete the subarray defined by obj.
+# If axis is None, obj is applied to the flattened array.
+arr = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
+arr
+np.delete(arr, 1, 0)
+np.delete(arr, np.s_[::2], 1)
+np.delete(arr, [1,3,5], None)
 
 
 
 # 14. copy(numpy)
+## 형식)np.copy(data, order='K', subok=False)
+x = data1
+y = np.copy(data1)
+
+x == data1
+y == data1
+
+## np.copy는 얕은복사이기 때문에 x의 내용이 data2로 바뀌어도
+ # 기존에 복사했던 data1의 데이터를 그대로 갖고 있는다.
+x = data2
+x == data1
+y == data1
 
 
 
 
-# 15. arrange(numpy)
+# 15. arange(numpy)
+## 형식)numpy.arange([start, ]stop, [step, ]dtype=None, *, like=None)
+### 내장 함수인 range와 동일한 기능이지만, 결과는 list가 아닌 ndarray로 생성된다.
+np.arange(3)
+np.arange(3.0)
+np.arange(3,7)
+np.arange(3,7,2)
 
 
 
 
 # 16. read_csv(pandas)
+pd.read_csv('data1.csv')
 
 
 
@@ -122,3 +148,5 @@ dfNaN.empty
             # 범위 인덱스로 기본값 설정(0,1,2,...,n) 데이터에 열 레이블이 포함된 경우 대신 열 선택을 수행한다.
 ### dtype: 강제 적용할 데이터 유형. 단 하나의 타입만 허용된다.
 ### copy: true or false로 설정 가능하며, None의 기본값은 false이다.
+pd.DataFrame(data1,index=(1,2,3,4), columns=None, dtype=None, copy=None)
+pd.DataFrame(data2,index=(1,2), columns=None, dtype=None, copy=None)
